@@ -11,5 +11,8 @@
   {modules, []},
 
   {licenses, ["Apache 2.0"]},
-  {links, []}
+  {links,[
+		{"Github","https://github.com/eyedouble/erlxml"},
+		{"Travis CI","https://travis-ci.org/eyedouble/erlxml"}
+  ]}
  ]}.
