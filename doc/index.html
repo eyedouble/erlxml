@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Erlxml</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="_priv/uikit.css" title="EDoc"></head>
+<div class="wrapper"><a class="menu-button" href="#" uk-icon="icon: menu;ratio:1.1"></a><aside class="uk-light"><a class="menu-button" style="float:right" href="#" uk-icon="icon: close"></a><div class="main-logo"><h1>Erlxml</h1><span class="version">1.0.0</span></div><ul class="uk-nav uk-nav-default"><li class="uk-nav-header">Pages</li><li class=""><a href="index.html">Index</a></li><li class="uk-nav-header">Modules</li><li><a href="erlxml.html" class="module">erlxml</a></li><li><a href="simple_map_sedem.html" class="module">simple_map_sedem</a></li></ul></aside><main class="uk-padding-left"><h1>Erlxml</h1>
+
+
+<p><a href="https://hex.pm/packages/erlxml"><img src="https://img.shields.io/hexpm/v/erlxml.svg?style=flat-square&labelColor=5c676d&color=714a94" alt="Hex pm" title="" /></a>
+<a href="https://secure.travis-ci.org/eyedouble/erlxml"><img src="https://secure.travis-ci.org/eyedouble/erlxml.svg?branch=master
+" alt="Build Status" title="Build Status" /></a>
+<a href="LICENSE"><img src="https://img.shields.io/github/license/eyedouble/erlxml?color=007ec6&style=flat-square" alt="License" title="" /></a></p>
+
+<p><strong>Modern Erlang / Elixir library for XML &lt;-&gt; map serialisation and deserialisation using XSD schema powered by OTP/xmerl</strong></p>
+
+<ul>
+<li><a href="https://hex.pm/packages/erlxml">Install from hex.pm</a></li>
+<li><a href="https://hexdocs.pm/erlxml">Documentation available on hexdoc</a></li>
+</ul>
+<p><strong>Version:</strong> 1.0.0</p>
+
+<h2>Summary</h2>
+
+
+<p>Erlxml provides more modern approach for working with data coming from XML sources.
+In order for Erlxml to determine how to deserialise XML a XML-schema also known as 
+XSD must be provided.</p>
+
+<p>Erlxml will validate against the provided XSD on serialisation and deserialisation.
+This includes extensive type checks - Validation is done by xmerl_xsd module.</p>
+
+<p>Type casting of data is will be attempted altough only a limited set of 
+XML types is supported at this stage:</p>
+<ul>
+<li><code>xs:string</code> &lt;> <code>binary</code></li>
+<li><code>xs:decimal</code> &lt;> <code>float</code></li>
+<li><p><code>xs:integer</code> &lt;> <code>integer</code></p></li>
+</ul>
+<h3>About maps and lists</h3>
+
+<p>Erlxml deserialises XML data into maps. It uses the XML-schema (XSD) to determine if
+a <code>tag</code> contains a list of <code>tags</code> or just some properties - Eg. books -> list of books vs book -> title, description etc.  Consider:</p>
+
+<p><pre><code>`
+   % List element
+   #{books=> [
+   #{book => #{title => &lt;&lt;"Title">>, desc => &lt;&lt;"Desc">>}}
+   ]}
+   % Non-list element
+   #{book => #{title => &lt;<"title"&gt;>, desc => &lt;<"desc"&gt;>}}
+</code></pre>`</p>
+
+<p>To determine if a <code>tag</code> should be deserialised as a 'list-element' Erlxml uses 
+the <code>maxOccurs</code> attribute in your XML-schema (XSD). All elements containing an element with a <code>maxOccurs</code> attribute with a value other than <code>1</code> are considered 'list-elements'.</p>
+
+<h2>Usage</h2>
+
+<p>To be done.</p>
+
+<h2>Contribute</h2>
+
+
+<p>For issues, comments or feedback please <a href="http://github.com/eyedouble/erlxml/issues">create an
+issue</a>.</p></main><script src="_priv/uikit.min.js"></script></div>
+</html>

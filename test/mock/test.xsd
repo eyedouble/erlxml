@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns=""
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace=""            
+            elementFormDefault="qualified"
+            attributeFormDefault="qualified">
+    <xs:element name="book_store">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="book" type="book_type"
+                             minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="book_type">
+         <xs:sequence>
+             <xs:element name="price" type="xs:integer"/>
+             <xs:element name="title" type="xs:string"/>
+             <xs:element name="author" type="xs:string"/>
+             <xs:element name="date" minOccurs="0" type="xs:string"/>
+             <xs:element name="publisher" type="xs:string"/>
+             <xs:element name="lala" type="lala"/>
+         </xs:sequence>
+         <xs:attribute name="ISBN" type="xs:string"/>
+     </xs:complexType>
+
+      <xs:complexType name="lala">
+        <xs:sequence>
+            <xs:element name="foo" type="xs:string"/>
+            <xs:element name="boe" type="xs:string"/>
+            <xs:element name="qat" type="qat"/>
+        </xs:sequence>
+     </xs:complexType>
+
+     <xs:complexType name="qat">
+        <xs:sequence>
+            <xs:element name="qty" type="xs:string"/>
+        </xs:sequence>
+     </xs:complexType>
+
+     
+
+    
+
+</xs:schema>

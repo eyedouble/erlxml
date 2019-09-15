@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Reply SYSTEM "http://154.66.197.224:8080/iComLive/hostConnect_3_10_1060.dtd">
+<Reply>
+  <GetBookingReply>
+    <BookingId>272425</BookingId>
+    <Ref>DSCR356899</Ref>
+    <BookingUpdateCount>26</BookingUpdateCount>
+    <Name>JOHN DOE</Name>
+    <QB>B</QB>
+    <Consult/>
+    <AgentRef/>
+    <Email/>
+    <TourplanBookingStatus>PN</TourplanBookingStatus>
+    <UDText1>johndoe@gmail.com</UDText1>
+    <UDText2>08112345678</UDText2>
+    <UDText3>99.99.99.99</UDText3>
+    <UDText4>nodata</UDText4>
+    <UDText5/>
+    <TourplanConsultant>EA</TourplanConsultant>
+    <SalesAnalysis1>ZA</SalesAnalysis1>
+    <SalesAnalysis2>WS</SalesAnalysis2>
+    <SalesAnalysis3>DS</SalesAnalysis3>
+    <SalesAnalysis4/>
+    <SalesAnalysis5>ZA</SalesAnalysis5>
+    <SalesAnalysis6/>
+    <TaxIndicator>0</TaxIndicator>
+    <TravelDate>2018-11-16</TravelDate>
+    <EnteredDate>2018-11-11</EnteredDate>
+    <BookingStatus/>
+    <ReadOnly>N</ReadOnly>
+    <CanAddServices>Y</CanAddServices>
+    <BookingType>F</BookingType>
+    <IsInternetBooking>Y</IsInternetBooking>
+    <Currency>ZAR</Currency>
+    <TotalPrice>198000</TotalPrice>
+    <Remarks/>
+    <Dialogue/>
+    <BookingNotes>
+      <BookingNote>
+        <NoteCategory>DOI</NoteCategory>
+        <NoteText>30921</NoteText>
+      </BookingNote>
+      <BookingNote>
+        <NoteCategory>FNM</NoteCategory>
+        <NoteText>John</NoteText>
+      </BookingNote>
+      <BookingNote>
+        <NoteCategory>PUI</NoteCategory>
+        <NoteText>30921</NoteText>
+      </BookingNote>
+      <BookingNote>
+        <NoteCategory>SNM</NoteCategory>
+        <NoteText>Doe</NoteText>
+      </BookingNote>
+    </BookingNotes>
+    <AccountingDetails>
+      <InvoicedTotal>0</InvoicedTotal>
+      <ReceivedTotal>0</ReceivedTotal>
+      <CreditsTotal>0</CreditsTotal>
+      <AmountDue>0</AmountDue>
+      <FutureBilling>198000</FutureBilling>
+    </AccountingDetails>
+    <Services>
+      <Service>
+        <ServiceLineId>375246</ServiceLineId>
+        <ServiceLineUpdateCount>9</ServiceLineUpdateCount>
+        <Opt>GENCRTEM001B_UUNL</Opt>
+        <OptionNumber>2786</OptionNumber>
+        <Date>2018-11-16</Date>
+        <SequenceNumber>10</SequenceNumber>
+        <Adults>1</Adults>
+        <Children>0</Children>
+        <Infants>0</Infants>
+        <CostedInBooking>Y</CostedInBooking>
+        <LinePrice>198000</LinePrice>
+        <SCU>day</SCU>
+        <SCUqty>6</SCUqty>
+        <Pickup_Date>2018-11-16</Pickup_Date>
+        <puTime>1830</puTime>
+        <puRemark>Cape Town International Airport</puRemark>
+        <Dropoff_Date>2018-11-22</Dropoff_Date>
+        <doTime>1830</doTime>
+        <doRemark>Cape Town International Airport</doRemark>
+        <Remarks>Renter:
+john doe
+johndoe@gmail.com
+08112345678 - Best time to call: Morning
+ZA - Nationality
+ZA - 99.99.99.99
+Age 25
+
+11 November 2018 @ 12:59 pm - Web Enquiry (Payment Possible)
+{payment_timestamp_placeholder} - Web Payment - {payment_amount_placeholder}
+DSA002
+
+Tempest SA: B - Ford Figo Hatchback - Tempest Car Hire 11037546
+GENCRTEM001B_UUNL
+
+Cape Town International Airport - 16 Nov 2018 @ 18:30
+Cape Town International Airport - 22 Nov 2018 @ 18:30
+
+R1980 (6 days x R330)
+
+Super Cover
+Unlimited km
+R3026 Excess
+R1500 Rental Security Deposit
+
+
+Extras Requested
+Contract Fee @ R85 Per Unit 
+
+Estimated One Way Fee = R0
+Total = R85
+
+Border Crossing Requested
+
+Total = R0
+
+Renter Comments:
+
+
+
+-------------------
+----- WP DATA -----
+-------------------
+[[veh_id:20107]]
+[[sup_id:9051]]
+[[tp_rate_id:2062788]]
+[[tp_option_code:GENCRTEM001B_SUNL]]
+[[owf_id:]]
+[[pickup_location:17191]]
+[[dropoff_location:17191]]
+[[pickup_date:16-11-2018]]
+[[pickup_time:18:30]]
+[[dropoff_date:22-11-2018]]
+[[dropoff_time:18:30]]
+[[country:South Africa]]</Remarks>
+        <SupplierName>Tempest Car Hire 11037546</SupplierName>
+        <Description>Ford Figo Hatchback or Similar</Description>
+        <Comment>Super Cover</Comment>
+        <CancelDeleteStatus>C</CancelDeleteStatus>
+        <CanUpdate>N</CanUpdate>
+        <CanAccept>N</CanAccept>
+        <PriceCode>RR</PriceCode>
+        <TourplanServiceStatus>IR</TourplanServiceStatus>
+        <ServiceCategory>S</ServiceCategory>
+        <LocationCode>GEN</LocationCode>
+        <Voucher_Status/>
+        <ServiceLineExpiryDate>2018-11-16</ServiceLineExpiryDate>
+        <SupplierConfirmation/>
+        <Status>??</Status>
+        <ServiceLineNotes>
+          <ServiceLineNote>
+            <NoteCategory>SVN</NoteCategory>
+            <NoteText>Extras Requested:
+Contract Fee @ R85 Per Unit</NoteText>
+          </ServiceLineNote>
+        </ServiceLineNotes>
+      </Service>
+    </Services>
+  </GetBookingReply>
+</Reply>

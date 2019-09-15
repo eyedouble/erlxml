@@ -1,0 +1,15 @@
+{application, erlxml,
+ [{description, "Modern Erlang / Elixir library for XML <-> map serialisation and deserialisation using XSD schema powered by OTP/xmerl"},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {mod, {erlxml_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
