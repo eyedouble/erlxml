@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"      
+            elementFormDefault="qualified"
+            attributeFormDefault="qualified">
+    <xs:element name="cereal_store">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cereal" type="cereal_type"
+                             minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="cereal_type">
+         <xs:sequence>
+             <xs:element name="a" type="xs:integer"/>
+             <xs:element name="name" type="xs:string"/>
+             <xs:element name="man" type="xs:string"/>
+         </xs:sequence>
+         <xs:attribute name="EAN" type="xs:string"/>
+     </xs:complexType>
+
+</xs:schema>

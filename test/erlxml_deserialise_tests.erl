@@ -4,11 +4,6 @@
 -include ( "test_helper.hrl" ).
 -include_lib("eunit/include/eunit.hrl").
 
-% simple_to_map_test() ->
-%     Res = simple_map_sedem:serialise(?MOCK, ?MOCK1XSD),
-%     ?assertMatch(true, Res).
-
-
 deserialise_1_test() ->
     {ok, Schema} = erlxml:build_schema_state({file, ?MOCK1XSD}),
     Res = erlxml_deserialise:deserialise({file, ?MOCK1XML}, Schema),

@@ -7,7 +7,8 @@
 -define(MOCK2XML, filename:absname("test/mock/reply.xml")).
 -define(MOCK2XSD, filename:absname("test/mock/hostConnect.xsd")).
 
-
+-define(MOCK3XML, filename:absname("test/mock/cereal.xml")).
+-define(MOCK3XSD, filename:absname("test/mock/cereal.xsd")).
 
 
 -define(MOCK1MAPRES, #{book_store :=

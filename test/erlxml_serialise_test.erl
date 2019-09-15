@@ -1,1 +1,0 @@
--module(erlxml_serialise_test).

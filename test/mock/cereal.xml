@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE Reply SYSTEM "test.xsd">
+<book_store xmlns="">
+        <book ISBN="978 90 5759 316 1">
+                <price>10</price>
+                <title>Het zijn net mensen</title>
+                <author>Joris Luyendijk</author>
+                <date>2006</date>
+                <publisher>Podium</publisher>
+                <lala>
+                    <foo>Podium</foo>
+                    <boe>ta</boe>
+                    <qat>
+                        <qty>piel</qty>
+                    </qat>
+                </lala>   
+        </book>
+        <book ISBN="978 90 5759 316 1">
+                <price>10</price>
+                <title>Het zijn net mensen</title>
+                <author>Joris Luyendijk</author>
+                <date>2006</date>
+                <publisher>Podium</publisher>
+                <lala>
+                    <foo>Podium</foo>
+                    <boe>ta</boe>
+                    <qat>
+                        <qty>piel</qty>
+                    </qat>
+
+                </lala>   
+        </book>
+        <book ISBN="978 90 5759 316 1">
+                <price>10</price>
+                <title>Het zijn net mensen</title>
+                <author>Joris Luyendijk</author>
+                <date>2006</date>
+                <publisher>Podium</publisher>
+                <lala>
+                    <foo>Podium</foo>
+                    <boe>ta</boe>
+                    <qat>
+                        <qty>piel</qty>
+                    </qat>
+
+                </lala>   
+        </book>
+
+</book_store>
