@@ -3,7 +3,7 @@
 <head>
 <title>Erlxml</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="_priv/uikit.css" title="EDoc"></head>
-<div class="wrapper"><a class="menu-button" href="#" uk-icon="icon: menu;ratio:1.1"></a><aside class="uk-light"><a class="menu-button" style="float:right" href="#" uk-icon="icon: close"></a><div class="main-logo"><h1>Erlxml</h1><span class="version">1.0.0</span></div><ul class="uk-nav uk-nav-default"><li class="uk-nav-header">Pages</li><li class=""><a href="index.html">Index</a></li><li class="uk-nav-header">Modules</li><li><a href="erlxml.html" class="module">erlxml</a></li><li><a href="simple_map_sedem.html" class="module">simple_map_sedem</a></li></ul></aside><main class="uk-padding-left"><h1>Erlxml</h1>
+<div class="wrapper"><a class="menu-button" href="#" uk-icon="icon: menu;ratio:1.1"></a><aside class="uk-light"><a class="menu-button" style="float:right" href="#" uk-icon="icon: close"></a><div class="main-logo"><h1>Erlxml</h1><span class="version">1.0.0-beta1</span></div><ul class="uk-nav uk-nav-default"><li class="uk-nav-header">Pages</li><li class=""><a href="index.html">Index</a></li><li class="uk-nav-header">Modules</li><li><a href="erlxml.html" class="module">erlxml</a></li><li><a href="erlxml_deserialise.html" class="module">erlxml_deserialise</a></li><li><a href="erlxml_serialise.html" class="module">erlxml_serialise</a></li></ul></aside><main class="uk-padding-left"><h1>Erlxml</h1>
 
 
 <p><a href="https://hex.pm/packages/erlxml"><img src="https://img.shields.io/hexpm/v/erlxml.svg?style=flat-square&labelColor=5c676d&color=714a94" alt="Hex pm" title="" /></a>
@@ -34,8 +34,19 @@ XML types is supported at this stage:</p>
 <ul>
 <li><code>xs:string</code> &lt;> <code>binary</code></li>
 <li><code>xs:decimal</code> &lt;> <code>float</code></li>
-<li><p><code>xs:integer</code> &lt;> <code>integer</code></p></li>
+<li><code>xs:float</code> &lt;> <code>float</code></li>
+<li><code>xs:int</code> &lt;> <code>integer</code></li>
+<li><code>xs:integer</code> &lt;> <code>integer</code></li>
+<li><code>xs:positiveInteger</code> &lt;> <code>integer</code></li>
+<li><code>xs:negativeInteger</code> &lt;> <code>integer</code></li>
+<li><code>xs:nonPositiveInteger</code> &lt;> <code>integer</code></li>
+<li><code>xs:nonNegativeInteger</code> &lt;> <code>integer</code></li>
+<li><code>xs:date</code> &lt;> <code>{YYYY, MM, DD}</code> (Only "YYYY-MM-DD" format is supported at this stage)</li>
+<li><code>xs:boolean</code> &lt;> <code>boolean</code> or <code>0/1</code></li>
 </ul>
+<p>These and all other types are validated by the <code>xmerl_xsd</code> module, Erlxml handles unkown types 
+gracefully by casting them to a binary string.</p>
+
 <h3>About maps and lists</h3>
 
 <p>Erlxml deserialises XML data into maps. It uses the XML-schema (XSD) to determine if
@@ -55,7 +66,16 @@ the <code>maxOccurs</code> attribute in your XML-schema (XSD). All elements cont
 
 <h2>Usage</h2>
 
-<p>To be done.</p>
+<h3>Serialise</h3>
+
+<p>To be done</p>
+
+<h3>Deserialise</h3>
+
+<ul>
+<li>Build a Schema state by using <code>{ok, State} = erlxml:build<em>schema</em>state({file, "path/to/example/file.xsd"})</code>.</li>
+<li><p>Call <code>erlxml:deserialise("path/to/xml/file.xml, State)</code>.</p></li>
+</ul>
 
 <h2>Contribute</h2>
 
