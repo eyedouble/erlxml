@@ -20,3 +20,8 @@ deserialise_from_string_test() ->
     {ok, Xml} = file:read_file(?MOCK2XML),
     Res = erlxml_deserialise:deserialise(Xml, Schema),
     ?assertMatch(?MOCK2MAPRES, Res).
+
+% deserialise_soap_test() ->
+%     {ok, Schema} = erlxml:build_schema_state({file, ?MOCKBIDXSD}),
+%     Res = erlxml_deserialise:deserialise({file, ?MOCKBID_RES_XML}, Schema),
+%     ?assertMatch(?MOCK2MAPRES, Res).

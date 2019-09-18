@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <MakeBookingWithQuoteResponse xmlns="http://www.budget.co.za">
+            <MakeBookingWithQuoteResult>
+                <AccountID>RFCACC</AccountID>
+                <RentalDuration>1</RentalDuration>
+                <RecordType>BR</RecordType>
+                <ReservationNumber>8888888</ReservationNumber>
+                <CardAuth>1000</CardAuth>
+                <VoucherNo>85285296</VoucherNo>
+                <ReservationLines>
+                    <ReservationLine>
+                        <ResLineCode>R</ResLineCode>
+                        <ResLineDesc1>Daily Charge</ResLineDesc1>
+                        <ResLineUnitChrg>259.00</ResLineUnitChrg>
+                        <ResLineChrgUnit> Per Day</ResLineChrgUnit>
+                        <ResLineDesc2 />
+                        <ResLineChrg>259.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>R</ResLineCode>
+                        <ResLineDesc1>KM Charge</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2>Unlimited</ResLineDesc2>
+                        <ResLineChrg>0.00</ResLineChrg>
+                        <ResLineNil>Nil</ResLineNil>
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>W</ResLineCode>
+                        <ResLineDesc1>(CDW) Collision Damage (Standard Liability)</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2>Included</ResLineDesc2>
+                        <ResLineChrg>0.00</ResLineChrg>
+                        <ResLineNil>Nil</ResLineNil>
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>W</ResLineCode>
+                        <ResLineDesc1>(TLW) Theft of Vehicle (Standard Liability)</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2>Included</ResLineDesc2>
+                        <ResLineChrg>0.00</ResLineChrg>
+                        <ResLineNil>Nil</ResLineNil>
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>A</ResLineCode>
+                        <ResLineDesc1>Contract fee</ResLineDesc1>
+                        <ResLineUnitChrg>96.00</ResLineUnitChrg>
+                        <ResLineChrgUnit> Per Rental</ResLineChrgUnit>
+                        <ResLineDesc2 />
+                        <ResLineChrg>96.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>S</ResLineCode>
+                        <ResLineDesc1>Tourism Levy  1.00 % of Daily Charges</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2>Included</ResLineDesc2>
+                        <ResLineChrg>0.00</ResLineChrg>
+                        <ResLineNil>Nil</ResLineNil>
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>S</ResLineCode>
+                        <ResLineDesc1>Airport Tax 11.00 % of Daily Charges</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2>Included</ResLineDesc2>
+                        <ResLineChrg>0.00</ResLineChrg>
+                        <ResLineNil>Nil</ResLineNil>
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>S</ResLineCode>
+                        <ResLineDesc1>E Toll Admin Fee</ResLineDesc1>
+                        <ResLineUnitChrg>20.00</ResLineUnitChrg>
+                        <ResLineChrgUnit> % of Etolls</ResLineChrgUnit>
+                        <ResLineDesc2 />
+                        <ResLineChrg>0.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>S</ResLineCode>
+                        <ResLineDesc1>Refuelling Fee</ResLineDesc1>
+                        <ResLineUnitChrg>20.00</ResLineUnitChrg>
+                        <ResLineChrgUnit> Per Rental</ResLineChrgUnit>
+                        <ResLineDesc2 />
+                        <ResLineChrg>20.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Collision Dmg Liability per incident in the event of a claim</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>20175.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Theft Liability per incident in the event of a claim</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>20175.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Claim Administration Fee per claim</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>800.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Traffic Fine Administration Handling Fee</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>295.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Overdue Rental Amin Fee</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>800.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Traffic Fine Administration Handling Fee</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>295.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Cross-border fee(Swaziland &amp; Lesotho = No charge)</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>1900.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                    <ReservationLine>
+                        <ResLineCode>C</ResLineCode>
+                        <ResLineDesc1>Fuel - Vehicle will be refueled at Renters cost</ResLineDesc1>
+                        <ResLineUnitChrg>0.00</ResLineUnitChrg>
+                        <ResLineChrgUnit />
+                        <ResLineDesc2 />
+                        <ResLineChrg>0.00</ResLineChrg>
+                        <ResLineNil />
+                    </ReservationLine>
+                </ReservationLines>
+                <Errors />
+            </MakeBookingWithQuoteResult>
+        </MakeBookingWithQuoteResponse>
+    </soap:Body>
+</soap:Envelope>

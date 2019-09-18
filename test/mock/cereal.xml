@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE Reply SYSTEM "test.xsd">
-<book_store xmlns="">
-        <book ISBN="978 90 5759 316 1">
+<cereal_store xmlns="">
+        <cereal ISBN="978 90 5759 316 1">
                 <price>10</price>
                 <title>Het zijn net mensen</title>
                 <author>Joris Luyendijk</author>
@@ -11,11 +11,11 @@
                     <foo>Podium</foo>
                     <boe>ta</boe>
                     <qat>
-                        <qty>piel</qty>
+                        <qty>die</qty>
                     </qat>
                 </lala>   
-        </book>
-        <book ISBN="978 90 5759 316 1">
+        </cereal>
+        <cereal ISBN="978 90 5759 316 1">
                 <price>10</price>
                 <title>Het zijn net mensen</title>
                 <author>Joris Luyendijk</author>
@@ -25,12 +25,12 @@
                     <foo>Podium</foo>
                     <boe>ta</boe>
                     <qat>
-                        <qty>piel</qty>
+                        <qty>zie</qty>
                     </qat>
 
                 </lala>   
-        </book>
-        <book ISBN="978 90 5759 316 1">
+        </cereal>
+        <cereal ISBN="978 90 5759 316 1">
                 <price>10</price>
                 <title>Het zijn net mensen</title>
                 <author>Joris Luyendijk</author>
@@ -40,10 +40,10 @@
                     <foo>Podium</foo>
                     <boe>ta</boe>
                     <qat>
-                        <qty>piel</qty>
+                        <qty>pie</qty>
                     </qat>
 
                 </lala>   
-        </book>
+        </cereal>
 
-</book_store>
+</cereal_store>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:bud="http://www.budget.co.za">
+    <soap:Header/>
+    <soap:Body>
+        <bud:MakeBookingWithQuote>
+            <bud:request>
+                <bud:AccountID>RFCACC</bud:AccountID>
+                <bud:Password>TEST</bud:Password>
+                <bud:RecordType>BQ</bud:RecordType>
+                <bud:QuoteNumber>8528529</bud:QuoteNumber>
+                <bud:EmailAddress>example@example.tld</bud:EmailAddress>
+                <bud:MOP_Type>AC</bud:MOP_Type>
+                <bud:MOP_No></bud:MOP_No>
+                <bud:MOP_Expiry></bud:MOP_Expiry>
+                <bud:Title>????</bud:Title>
+                <bud:Initials>A</bud:Initials>
+                <bud:FirstNames>
+                    <bud:FirstName>Arnold</bud:FirstName>
+                </bud:FirstNames>
+                <bud:Surname>Van</bud:Surname>
+                <bud:CountryCode></bud:CountryCode>
+                <bud:DialCode></bud:DialCode>
+                <bud:PhoneNo>081 123 4455</bud:PhoneNo>
+                <bud:InvoiceAddressLines>
+                    <bud:InvoiceAddress>Fake Ave 1, Cape Town</bud:InvoiceAddress>
+                </bud:InvoiceAddressLines>
+                <bud:InvoicePostCode></bud:InvoicePostCode>
+                <bud:CollectionAddressLines>
+                    <bud:CollectionAddress></bud:CollectionAddress>
+                </bud:CollectionAddressLines>
+                <bud:CollectPhoneNo></bud:CollectPhoneNo>
+                <bud:DeliveryAddressLines>
+                    <bud:DeliveryAddress></bud:DeliveryAddress>
+                </bud:DeliveryAddressLines>
+                <bud:DeliverPhoneNo></bud:DeliverPhoneNo>
+                <bud:RewardProgram></bud:RewardProgram>
+                <bud:RewardProgramNo></bud:RewardProgramNo>
+                <bud:VoucherNo>85285296</bud:VoucherNo>
+                <bud:OrderNo>FCCR852852</bud:OrderNo>
+                <bud:ContactName>Example Contact</bud:ContactName>
+                <bud:ContactPhoneNo>27818528528</bud:ContactPhoneNo>
+                <bud:Brand></bud:Brand>
+                <bud:ID_Type></bud:ID_Type>
+                <bud:RenterID></bud:RenterID>
+                <bud:RenterEmail></bud:RenterEmail>
+                <bud:Remarks></bud:Remarks>
+                <bud:CostCentre></bud:CostCentre>
+                <bud:RenterFlatNo></bud:RenterFlatNo>
+                <bud:RenterBuildingName></bud:RenterBuildingName>
+                <bud:RenterStreetNo></bud:RenterStreetNo>
+                <bud:RenterStreetName></bud:RenterStreetName>
+                <bud:RenterSuburb></bud:RenterSuburb>
+                <bud:RenterCity></bud:RenterCity>
+                <bud:RenterProvince></bud:RenterProvince>
+                <bud:RenterCountry></bud:RenterCountry>
+                <bud:RenterPostCode></bud:RenterPostCode>
+            </bud:request>
+        </bud:MakeBookingWithQuote>
+    </soap:Body>
+</soap:Envelope>

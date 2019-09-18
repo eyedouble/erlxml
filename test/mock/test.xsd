@@ -7,8 +7,7 @@
     <xs:element name="book_store">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="book" type="book_type"
-                             minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="book" type="book_type" minOccurs="1" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

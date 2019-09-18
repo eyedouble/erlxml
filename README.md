@@ -58,6 +58,10 @@ the `maxOccurs` attribute in your XML-schema (XSD). All elements containing an e
 
 
 
+## About Schemas
+The first line of your schema file (XSD-file) contain `<?xml version="1.0" encoding="UTF-8"?>`.
+
+Schema namespace must be `xs:` for now as the library is not handeling schema namespaces dynamically yet.
 
 ## Usage
 ### Serialise

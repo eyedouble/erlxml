@@ -10,6 +10,7 @@
     ,build_schema_state/1
     ,get_element_data_type/2
     ,is_list_element/2
+    ,get_element_ordering/2
 ]).
 
 build_schema_state({binary, <<RawSchema/binary>>}) ->
@@ -40,6 +41,52 @@ get_element_data_type(#xmlText{parents=Parents}=Element,#erlXmlSchemaState{struc
             end;
         _Other -> {ok, <<"xs:string">>}
     end.
+
+get_element_ordering(#xmlElement{name=Name}=Element, #erlXmlSchemaState{struct=SchemaStruct}=XS) ->    
+    case [Content || #xmlElement{content=Content} <- xmerl_xpath:string("//xs:element[@name='" ++ atom_to_list(Name) ++ "']", SchemaStruct), Content =/= []] of
+        [Content|_] -> determine_order(Content);
+        [] -> case get_referenced_element_content(Element, XS) of
+            [_|_]=Content -> determine_order(Content)
+        end
+    end.
+
+%% @private
+get_referenced_element_content(#xmlElement{name=Name}=Element, #erlXmlSchemaState{struct=SchemaStruct}=XS) -> 
+    FindElementsThatReference = fun(FName, FSchemaStruct) -> 
+        [Attr||
+            #xmlElement{attributes=Attrs}=_DefElement <- xmerl_xpath:string("//xs:element[@name='" ++ atom_to_list(FName) ++ "'][@type or @ref]", FSchemaStruct),
+            #xmlAttribute{name=AttrName}=Attr <- Attrs, (AttrName =:= type orelse AttrName =:= ref)]
+    end,
+
+    FindReferencedElementContent = fun(REName, RESchemaStruct) ->
+        case xmerl_xpath:string("//*[@name='" ++ REName ++ "']", RESchemaStruct) of
+            [#xmlElement{content=Content}=_E] -> Content;
+            _Other -> {error, <<"Could not determine order from element selected in order definition">>}
+        end
+    end,
+
+    case FindElementsThatReference(Name, SchemaStruct) of
+        [#xmlAttribute{name=_Name, value=Value}=_Attr|_] -> FindReferencedElementContent(Value, SchemaStruct);     
+        _Other -> {error, <<"Could not find suitable element for order definition">>}
+    end.
+
+%% @private
+determine_order(Content) ->
+    {ok, lists:flatten(recursive_order_builder(Content))}.
+
+
+%% @private
+recursive_order_builder([Car|Cdr]) ->
+    [recursive_order_builder(Car), recursive_order_builder(Cdr)];
+recursive_order_builder(#xmlElement{attributes=Attrs, content=Content}) ->
+    P = [list_to_atom(Value)||#xmlAttribute{name=Name, value=Value} <- Attrs, (Name =:= name orelse Name =:= ref)],
+    [P, recursive_order_builder(Content)];
+recursive_order_builder(#xmlText{}=_) -> [];
+recursive_order_builder([]) -> [].
+
+
+
+
 
 % find_element_in_schema(#xmlElement{name=Name}=Element) ->
 %     {Xsd,_Rest} = xmerl_scan:file("test.xsd", []),
