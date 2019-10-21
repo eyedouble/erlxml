@@ -24,29 +24,7 @@ deserialise({xmerl_structure, StructForValidation}, #erlXmlSchemaState{xsd_state
             simplify(CleanStruct, XS)
     end.
 
-simplify([#xmlElement{name = Name, attributes = _Attrs, content = Content}=Element|T], #erlXmlSchemaState{}=XS)->
-    case erlxml:is_list_element(Element, XS) of
-        true ->
-            TransElement = #{Name => [simplify(E, XS)|| E <- Content]},
-            case simplify(T, XS) of
-                #{} -> TransElement;
-                Other -> [TransElement, Other]
-            end;
-        false ->
-            maps:merge(simplify(Element, XS), simplify(T, XS))
-    end;
-simplify([Car|Cdr], #erlXmlSchemaState{}=XS) ->
-    case [simplify(Car, XS), simplify(Cdr, XS)] of
-        [Car1|Cdr1] when Cdr1 =:= [#{}] -> Car1;
-        [_Car1|_Cdr1]=Pass -> Pass
-    end;    
-simplify(#xmlElement{name = Name, attributes = Attrs, content = Content}=_Element, #erlXmlSchemaState{}=XS) ->
-    MapElement = #{Name => simplify(Content, XS)},
-    case Attrs =/= [] andalso ?WITH_ATTRS =:= true of
-        true -> maps:merge(MapElement, #{<<"_xattributes">> => simplify_attributes(Attrs)});
-        false -> MapElement
-    end;
-simplify(#xmlText{value=Value}=Val, #erlXmlSchemaState{}=XS) ->
+simplify(#xmlText{value=Value}=Val, XS) ->
     case erlxml:get_element_data_type(Val, XS) of
         <<"xs:decimal">> -> list_to_float(Value);
         <<"xs:float">> -> list_to_float(Value);
@@ -59,6 +37,52 @@ simplify(#xmlText{value=Value}=Val, #erlXmlSchemaState{}=XS) ->
         <<"xs:boolean">> -> conv_func_boolean(Value);
         _Other -> list_to_binary(Value)
     end;
+
+simplify(#xmlElement{name = Name, attributes = Attrs, content = Content}=Element, XS) ->
+     TransContent = case erlxml:is_list_element(Element, XS) of 
+        true -> [simplify(E, XS)|| E <- Content];
+        false -> lists:foldl(fun
+                (#xmlElement{}=X, Acc) -> maps:merge(Acc, simplify(X, XS));
+                (#xmlText{}=X, _Acc) -> simplify(X, XS)
+        end, #{}, Content)
+    end,    
+    MapElement =  #{Name => TransContent},
+    case Attrs =/= [] andalso ?WITH_ATTRS =:= true of
+        true -> maps:merge(MapElement, #{<<"_xattributes">> => simplify_attributes(Attrs)});
+        false -> MapElement
+    end;
+
+simplify([Car|Cdr], XS) ->    
+    case simplify(Cdr, XS) of
+        #{} -> simplify(Car, XS);
+        _Other -> [simplify(Car, XS)] ++ simplify(Cdr, XS)
+    end;
+   
+    
+
+% simplify([#xmlElement{name = Name, attributes = _Attrs, content = Content}=Element|T], #erlXmlSchemaState{}=XS)->
+%     case erlxml:is_list_element(Element, XS) of
+%         true ->
+%             TransElement = #{Name => [simplify(E, XS)|| E <- Content]},
+%             case simplify(T, XS) of
+%                 #{} -> TransElement;
+%                 Other -> [TransElement, Other]
+%             end;
+%         false ->
+%             maps:merge(simplify(Element, XS), simplify(T, XS))
+%     end;
+% simplify([Car|Cdr], #erlXmlSchemaState{}=XS) ->
+%     case [simplify(Car, XS), simplify(Cdr, XS)] of
+%         [Car1|Cdr1] when Cdr1 =:= [#{}] -> Car1;
+%         [_Car1|_Cdr1]=Pass -> Pass
+%     end;    
+% simplify(#xmlElement{name = Name, attributes = Attrs, content = Content}=_Element, #erlXmlSchemaState{}=XS) ->
+%     MapElement = #{Name => simplify(Content, XS)},
+%     case Attrs =/= [] andalso ?WITH_ATTRS =:= true of
+%         true -> maps:merge(MapElement, #{<<"_xattributes">> => simplify_attributes(Attrs)});
+%         false -> MapElement
+%     end;
+
 simplify([], #erlXmlSchemaState{}=_XS) -> #{}.
 
 %%

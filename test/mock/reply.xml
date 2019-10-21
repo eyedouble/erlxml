@@ -159,5 +159,6 @@ Contract Fee @ R85 Per Unit</NoteText>
         </ServiceLineNotes>
       </Service>
     </Services>
+
   </GetBookingReply>
 </Reply>
