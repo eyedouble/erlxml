@@ -1,6 +1,6 @@
 {application, erlxml,
  [{description, "Modern Erlang / Elixir library for XML <-> map serialisation and deserialisation using XSD schema powered by OTP/xmerl"},
-  {vsn, "1.0.0-beta3"},
+  {vsn, "1.0.0-beta4"},
   {registered, []},
   {mod, {erlxml_app, []}},
   {applications,

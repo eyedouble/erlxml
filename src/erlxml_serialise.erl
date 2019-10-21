@@ -6,15 +6,18 @@
 -export([
     serialise/2
     ,serialise/3
+    ,serialise/4
     ,rescan_for_namespacing/2
 ]).
 
 -define(TIMEOUT, 175).
 
-serialise(Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) ->
+serialise(Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) -> serialise(Struct, XS, "<?xml version=\"1.0\"?>").
+
+serialise(Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS, Prolog) ->
     Ref = make_ref(),
     Pid = self(),
-    spawn_link(?MODULE, serialise, [{Pid, Ref}, Struct, XS]),
+    spawn_link(?MODULE, serialise, [{Pid, Ref}, Struct, XS, Prolog]),
     receive
         {serialise, {Pid, Ref}, Res} -> Res
     after
@@ -22,7 +25,7 @@ serialise(Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) ->
     end.
             
 %% @private
-serialise({Pid, Ref}, Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) when is_pid(Pid) andalso is_reference(Ref) ->
+serialise({Pid, Ref}, Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS, Prolog) when is_pid(Pid) andalso is_reference(Ref) ->
     ExpandedStruct = expand(Struct, [], XS),
     [StructForValidation] = erlxml_lib:expand_content(ExpandedStruct),  
 
@@ -37,13 +40,13 @@ serialise({Pid, Ref}, Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) when i
                     case validate(StructureWithNamespacing, XS) of
                         {error, Error} -> {error, Error};
                         {ok, ValidatedNamespacedXmlStructure} ->
-                            {ok, list_to_binary(xmerl:export([ValidatedNamespacedXmlStructure], xmerl_xml))}
+                            {ok, list_to_binary(xmerl:export([ValidatedNamespacedXmlStructure], xmerl_xml, []))}
                     end
             after 
                 (?TIMEOUT - 10) -> {error, <<"Namespace rebuild process exceeded timeout limit">>}
             end;
         {ok, ValidatedXmlStruct} ->            
-            {ok, list_to_binary(xmerl:export([ValidatedXmlStruct], xmerl_xml))}
+            {ok, list_to_binary(xmerl:export([ValidatedXmlStruct], xmerl_xml, [#xmlAttribute{name=prolog, value=Prolog}]))}
     end,
     Pid ! {serialise, {Pid, Ref}, Res}. 
 
