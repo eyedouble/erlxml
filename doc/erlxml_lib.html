@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module erlxml_lib</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="_priv/uikit.css" title="EDoc">
+</head>
+<body bgcolor="white"><div class="wrapper"><a class="menu-button" href="#" uk-icon="icon: menu;ratio:1.1"></a><aside class="uk-light"><a class="menu-button" style="float:right" href="#" uk-icon="icon: close"></a><div class="main-logo"><h1>Erlxml</h1><span class="version">1.0.0-beta2</span></div><ul class="uk-nav uk-nav-default"><li class="uk-nav-header">Pages</li><li class=""><a href="index.html">Index</a></li><li class="uk-nav-header">Modules</li><li><a href="erlxml.html" class="module">erlxml</a></li><li><a href="erlxml_deserialise.html" class="module">erlxml_deserialise</a></li><li><a href="erlxml_lib.html" class="module">erlxml_lib</a></li><li><a href="erlxml_serialise.html" class="module">erlxml_serialise</a></li></ul></aside><main class="uk-padding-left">
+
+
+<h1 class="uk-heading-small">Module erlxml_lib</h1><hr class="">
+<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2 id="index">Function Index</h2>
+<div class="uk-overflow-auto"><table class="uk-table uk-table-striped"><tr><td valign="top"><a href="#empty_tag-1" uk-scroll="">empty_tag/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#empty_tag-2" uk-scroll="">empty_tag/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#end_tag-1" uk-scroll="">end_tag/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_attributes-1" uk-scroll="">expand_attributes/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_attributes-3" uk-scroll="">expand_attributes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_content-1" uk-scroll="">expand_content/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_content-3" uk-scroll="">expand_content/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_element-1" uk-scroll="">expand_element/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_element-3" uk-scroll="">expand_element/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#export_attribute-1" uk-scroll="">export_attribute/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#export_text-1" uk-scroll="">export_text/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#find_attribute-2" uk-scroll="">find_attribute/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#flatten_text-1" uk-scroll="">flatten_text/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#foldxml-3" uk-scroll="">foldxml/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#is_empty_data-1" uk-scroll="">is_empty_data/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#mapfoldxml-3" uk-scroll="">mapfoldxml/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#mapxml-2" uk-scroll="">mapxml/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#markup-2" uk-scroll="">markup/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#markup-3" uk-scroll="">markup/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#normalize_content-1" uk-scroll="">normalize_content/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#normalize_content-3" uk-scroll="">normalize_content/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#normalize_element-1" uk-scroll="">normalize_element/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#normalize_element-3" uk-scroll="">normalize_element/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_whitespace-1" uk-scroll="">remove_whitespace/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#simplify_content-1" uk-scroll="">simplify_content/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#simplify_element-1" uk-scroll="">simplify_element/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_tag-1" uk-scroll="">start_tag/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_tag-2" uk-scroll="">start_tag/2</a></td><td></td></tr>
+</table></div>
+
+<h2 id="functions">Function Details</h2>
+<div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="empty_tag-1">empty_tag/1</span></h3>
+<div class="spec">
+<code><code>empty_tag(Tag) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="empty_tag-2">empty_tag/2</span></h3>
+<div class="spec">
+<code><code>empty_tag(Tag, Attrs) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="end_tag-1">end_tag/1</span></h3>
+<div class="spec">
+<code><code>end_tag(Tag) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="expand_attributes-1">expand_attributes/1</span></h3>
+<div class="spec">
+<code><code>expand_attributes(Attrs) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="expand_attributes-3">expand_attributes/3</span></h3>
+<div class="spec">
+<code><code>expand_attributes(T, Pos, Parents) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="expand_content-1">expand_content/1</span></h3>
+<div class="spec">
+<code><code>expand_content(Content) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="expand_content-3">expand_content/3</span></h3>
+<div class="spec">
+<code><code>expand_content(Content, Pos, Parents) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="expand_element-1">expand_element/1</span></h3>
+<div class="spec">
+<code><code>expand_element(Element) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="expand_element-3">expand_element/3</span></h3>
+<div class="spec">
+<code><code>expand_element(Element, Pos, Parents) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="export_attribute-1">export_attribute/1</span></h3>
+<div class="spec">
+<code><code>export_attribute(I) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="export_text-1">export_text/1</span></h3>
+<div class="spec">
+<code><code>export_text(T) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="find_attribute-2">find_attribute/2</span></h3>
+<div class="spec">
+<code><code>find_attribute(Name, Attrs) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="flatten_text-1">flatten_text/1</span></h3>
+<div class="spec">
+<code><code>flatten_text(T) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="foldxml-3">foldxml/3</span></h3>
+<div class="spec">
+<code><code>foldxml(Fun, Accu0, XmlElement) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="is_empty_data-1">is_empty_data/1</span></h3>
+<div class="spec">
+<code><code>is_empty_data(Xs) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="mapfoldxml-3">mapfoldxml/3</span></h3>
+<div class="spec">
+<code><code>mapfoldxml(Fun, Accu0, XmlElement) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="mapxml-2">mapxml/2</span></h3>
+<div class="spec">
+<code><code>mapxml(Fun, XmlElement) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="markup-2">markup/2</span></h3>
+<div class="spec">
+<code><code>markup(Tag, Data) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="markup-3">markup/3</span></h3>
+<div class="spec">
+<code><code>markup(Tag, Attrs, Data) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="normalize_content-1">normalize_content/1</span></h3>
+<div class="spec">
+<code><code>normalize_content(Content) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="normalize_content-3">normalize_content/3</span></h3>
+<div class="spec">
+<code><code>normalize_content(Content, Pos, Parents) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="normalize_element-1">normalize_element/1</span></h3>
+<div class="spec">
+<code><code>normalize_element(Element) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="normalize_element-3">normalize_element/3</span></h3>
+<div class="spec">
+<code><code>normalize_element(Element, Pos, Parents) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="remove_whitespace-1">remove_whitespace/1</span></h3>
+<div class="spec">
+<code><code>remove_whitespace(Data) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="simplify_content-1">simplify_content/1</span></h3>
+<div class="spec">
+<code><code>simplify_content(T) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="simplify_element-1">simplify_element/1</span></h3>
+<div class="spec">
+<code><code>simplify_element(XmlElement) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="start_tag-1">start_tag/1</span></h3>
+<div class="spec">
+<code><code>start_tag(TagStr) -&gt; any()</code></code>
+</div>
+</div><div class="uk-card uk-card-default uk-card-body uk-margin">
+<h3 class="uk-card-title"><span id="start_tag-2">start_tag/2</span></h3>
+<div class="spec">
+<code><code>start_tag(Tag, Attrs) -&gt; any()</code></code>
+</div>
+</div><hr>
+
+<a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a>
+
+<p><i>Made with EDoc-S</i></p>
+<script src="_priv/uikit.min.js"></script></main></div></body>
+</html>

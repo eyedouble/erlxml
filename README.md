@@ -65,11 +65,12 @@ Schema namespace must be `xs:` for now as the library is not handeling schema na
 
 ## Usage
 ### Serialise
-To be done
+- Build a Schema state by using `{ok, State} = erlxml:build_schema_state({file, "path/to/example/file.xsd"})`.
+- Call `erlxml:deserialise(#{'mock' => ""}, State)`.
 
 ### Deserialise
 - Build a Schema state by using `{ok, State} = erlxml:build_schema_state({file, "path/to/example/file.xsd"})`.
-- Call `erlxml:deserialise("path/to/xml/file.xml, State)`.
+- Call `erlxml:deserialise("<mock/>", State)`.
 
 
 

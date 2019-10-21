@@ -3,7 +3,7 @@
 <head>
 <title>Erlxml</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="_priv/uikit.css" title="EDoc"></head>
-<div class="wrapper"><a class="menu-button" href="#" uk-icon="icon: menu;ratio:1.1"></a><aside class="uk-light"><a class="menu-button" style="float:right" href="#" uk-icon="icon: close"></a><div class="main-logo"><h1>Erlxml</h1><span class="version">1.0.0-beta1</span></div><ul class="uk-nav uk-nav-default"><li class="uk-nav-header">Pages</li><li class=""><a href="index.html">Index</a></li><li class="uk-nav-header">Modules</li><li><a href="erlxml.html" class="module">erlxml</a></li><li><a href="erlxml_deserialise.html" class="module">erlxml_deserialise</a></li><li><a href="erlxml_serialise.html" class="module">erlxml_serialise</a></li></ul></aside><main class="uk-padding-left"><h1>Erlxml</h1>
+<div class="wrapper"><a class="menu-button" href="#" uk-icon="icon: menu;ratio:1.1"></a><aside class="uk-light"><a class="menu-button" style="float:right" href="#" uk-icon="icon: close"></a><div class="main-logo"><h1>Erlxml</h1><span class="version">1.0.0-beta2</span></div><ul class="uk-nav uk-nav-default"><li class="uk-nav-header">Pages</li><li class=""><a href="index.html">Index</a></li><li class="uk-nav-header">Modules</li><li><a href="erlxml.html" class="module">erlxml</a></li><li><a href="erlxml_deserialise.html" class="module">erlxml_deserialise</a></li><li><a href="erlxml_lib.html" class="module">erlxml_lib</a></li><li><a href="erlxml_serialise.html" class="module">erlxml_serialise</a></li></ul></aside><main class="uk-padding-left"><h1>Erlxml</h1>
 
 
 <p><a href="https://hex.pm/packages/erlxml"><img src="https://img.shields.io/hexpm/v/erlxml.svg?style=flat-square&labelColor=5c676d&color=714a94" alt="Hex pm" title="" /></a>
@@ -64,17 +64,25 @@ a <code>tag</code> contains a list of <code>tags</code> or just some properties 
 <p>To determine if a <code>tag</code> should be deserialised as a 'list-element' Erlxml uses 
 the <code>maxOccurs</code> attribute in your XML-schema (XSD). All elements containing an element with a <code>maxOccurs</code> attribute with a value other than <code>1</code> are considered 'list-elements'.</p>
 
+<h2>About Schemas</h2>
+
+<p>The first line of your schema file (XSD-file) contain <code>&lt;?xml&gt;</code>.</p>
+
+<p>Schema namespace must be <code>xs:</code> for now as the library is not handeling schema namespaces dynamically yet.</p>
+
 <h2>Usage</h2>
 
 <h3>Serialise</h3>
 
-<p>To be done</p>
-
+<ul>
+<li>Build a Schema state by using <code>{ok, State} = erlxml:build<em>schema</em>state({file, "path/to/example/file.xsd"})</code>.</li>
+<li><p>Call <code>erlxml:deserialise(#{'mock' => ""}, State)</code>.</p></li>
+</ul>
 <h3>Deserialise</h3>
 
 <ul>
 <li>Build a Schema state by using <code>{ok, State} = erlxml:build<em>schema</em>state({file, "path/to/example/file.xsd"})</code>.</li>
-<li><p>Call <code>erlxml:deserialise("path/to/xml/file.xml, State)</code>.</p></li>
+<li><p>Call <code>erlxml:deserialise("&lt;mock /&gt;", State)</code>.</p></li>
 </ul>
 
 <h2>Contribute</h2>

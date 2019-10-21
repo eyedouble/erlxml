@@ -1,6 +1,1 @@
-{"1.1.0",
-[{<<"erlsom">>,{pkg,<<"erlsom">>,<<"1.5.0">>},0}]}.
-[
-{pkg_hash,[
- {<<"erlsom">>, <<"C5A5CDD0EE0E8DCA62BCC4B13FF08DA24FDEFC16CCD8B25282A2FDA2BA1BE24A">>}]}
-].
+[].
