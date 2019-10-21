@@ -26,8 +26,7 @@ build_schema_state({binary, <<RawSchema/binary>>}) ->
 build_schema_state({file, SchemaPath}) ->
     {Schema,_Rest} = xmerl_scan:file(SchemaPath, []),
     {ok, Model} = xmerl_xsd:process_schema(SchemaPath),
-    ?PRINT(Model),
-
+    % ?PRINT(Model),
     {ok, #erlXmlSchemaState{struct=Schema, xsd_state=Model}}.
 
 
@@ -51,7 +50,7 @@ build_schemas_state({file, _SchemaPath}) ->
     SchemaPath= "test/mock/soap/bidvest.xsd",  
     {Schema,_Rest} = xmerl_scan:file(filename:absname(SchemaPath), []),
     {ok, Model} = xmerl_xsd:process_schemas(Schemas),
-    ?PRINT(Model),
+    % ?PRINT(Model),
     {ok, #erlXmlSchemaState{struct=Schema, xsd_state=Model}}.
 
 
@@ -198,7 +197,7 @@ parse_compliant(File, Schema) ->
             % P = ,
             Q = xmerl_lib:remove_whitespace([Xml2]),
             Z = [simplify_element(T)|| T <- Q],
-            ?PRINT(Z),
+            % ?PRINT(Z),
             Z
             
     end.
