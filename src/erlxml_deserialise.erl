@@ -8,11 +8,11 @@
 ]).
 
 -define(WITH_ATTRS, true).
-deserialise({file, XmlPath}, #erlXmlSchemaState{xsd_state=XsdState}=XS) -> 
+deserialise({file, XmlPath}, #erlXmlSchemaState{xsd_state=_XsdState}=XS) -> 
    {StructForValidation,_} = xmerl_scan:file(XmlPath, [{space, normalize}]),
    deserialise({xmerl_structure, StructForValidation}, XS);
 
-deserialise(<<Xml/binary>>, #erlXmlSchemaState{xsd_state=XsdState}=XS) ->
+deserialise(<<Xml/binary>>, #erlXmlSchemaState{xsd_state=_XsdState}=XS) ->
     {StructForValidation,_} = xmerl_scan:string(binary_to_list(Xml), [{space, normalize}]),
     deserialise({xmerl_structure, StructForValidation}, XS);
 
@@ -24,7 +24,7 @@ deserialise({xmerl_structure, StructForValidation}, #erlXmlSchemaState{xsd_state
             simplify(CleanStruct, XS)
     end.
 
-simplify([#xmlElement{name = Name, attributes = Attrs, content = Content}=Element|T], #erlXmlSchemaState{}=XS)->
+simplify([#xmlElement{name = Name, attributes = _Attrs, content = Content}=Element|T], #erlXmlSchemaState{}=XS)->
     case erlxml:is_list_element(Element, XS) of
         true ->
             TransElement = #{Name => [simplify(E, XS)|| E <- Content]},

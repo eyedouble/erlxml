@@ -5,21 +5,66 @@
 
 -export([
     serialise/2
+    ,serialise/3
+    ,rescan_for_namespacing/2
 ]).
 
-serialise(Struct, #erlXmlSchemaState{xsd_state=XsdState}=XS) ->
+-define(TIMEOUT, 175).
+
+serialise(Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) ->
+    Ref = make_ref(),
+    Pid = self(),
+    spawn_link(?MODULE, serialise, [{Pid, Ref}, Struct, XS]),
+    receive
+        {serialise, {Pid, Ref}, Res} -> Res
+    after
+        ?TIMEOUT -> {error, <<"Serialisation process exceeded timeout limit">>}
+    end.
+            
+%% @private
+serialise({Pid, Ref}, Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) when is_pid(Pid) andalso is_reference(Ref) ->
     ExpandedStruct = expand(Struct, [], XS),
-    ?PRINT(ExpandedStruct),
-    [StructForValidation] = xmerl_lib:expand_content(ExpandedStruct),  
+    [StructForValidation] = erlxml_lib:expand_content(ExpandedStruct),  
+
+    Ref1 = make_ref(),
+    Pid1 = self(),
+    spawn_link(?MODULE, rescan_for_namespacing, [{Pid1, Ref1}, StructForValidation]),   
+
+    Res = case validate(StructForValidation, XS) of
+        {error, _Error} ->   
+            receive 
+                {rescan_namespacing, {Pid1, Ref1}, StructureWithNamespacing} -> 
+                    case validate(StructureWithNamespacing, XS) of
+                        {error, Error} -> {error, Error};
+                        {ok, ValidatedNamespacedXmlStructure} ->
+                            {ok, list_to_binary(xmerl:export([ValidatedNamespacedXmlStructure], xmerl_xml))}
+                    end
+            after 
+                (?TIMEOUT - 10) -> {error, <<"Namespace rebuild process exceeded timeout limit">>}
+            end;
+        {ok, ValidatedXmlStruct} ->            
+            {ok, list_to_binary(xmerl:export([ValidatedXmlStruct], xmerl_xml))}
+    end,
+    Pid ! {serialise, {Pid, Ref}, Res}. 
+
+%% @private
+validate(StructForValidation, #erlXmlSchemaState{xsd_state=XsdState}=_XS) -> 
     case xmerl_xsd:validate(StructForValidation, XsdState) of
-        {error, Error} -> {error, Error};    
-        {ValidatedXmlStruct,_Rest} -> 
-            list_to_binary(xmerl:export([ValidatedXmlStruct], xmerl_xml))
-    end.   
+        {error, Error} -> {error, Error};   
+        {ValidatedXmlStruct,_Rest} -> {ok, ValidatedXmlStruct}
+    end.
 
+%% @private
+rescan_for_namespacing({From, Ref}, Struct) when is_pid(From) andalso is_reference(Ref) ->
+    Q = xmerl:export([Struct], xmerl_xml),
+    {StructureWithNamespacing, _} = xmerl_scan:string(lists:flatten(Q), [{space, normalize}]),
+    From ! {rescan_namespacing, {From, Ref}, StructureWithNamespacing}.
 
-
-expand(#{}=Element, InternalState, #erlXmlSchemaState{xsd_state=XsdState}=XS) when map_size(Element) > 0 ->
+%%
+%%  Expansion
+%%
+%% @private
+expand(#{}=Element, InternalState, #erlXmlSchemaState{xsd_state=_XsdState}=XS) when map_size(Element) > 0 ->
     {Attrs, Element1} = case maps:is_key(<<"_xattributes">>, Element) of
         true -> maps:take(<<"_xattributes">>, Element);
         false -> {[], Element}
@@ -39,28 +84,32 @@ expand(#{}=Element, InternalState, #erlXmlSchemaState{xsd_state=XsdState}=XS) wh
         Other -> expand(Other, InternalState, XS)   
     end,   
     sort_with_orderlist(List, Ordering, 1);
+
 %% What about elements with attributes that have a list value?
 %% PROPOSAL:
 %%  adjust the map structure to allow values to be passed in like:
 %%  #{ 'Tag' => #{ '_' => <<"Arb Value">>, <<"_xattrs">> => [{name, "val"}]}}
 %%
+%% @private
 expand([{Tag, [#{}=_|_]=Val}=_E|T], InternalState, XS) ->
     Attrs = [],
     [{Tag, Attrs, lists:foldl(fun(Element, Acc) ->
         Acc ++ expand(Element, InternalState, XS)
     end,[], Val)}] ++ expand(T, InternalState, XS);
-  
+
 expand([{_Tag, _Val}=E|T], InternalState, XS) ->
     expand(E, InternalState, XS) ++ expand(T, InternalState, XS);
 
 expand({Tag, #{}=Val}=_E, _InternalState, _XS) when map_size(Val) =:= 0 ->
     [{Tag, [], []}];
 
-expand({Tag, Val}=_E, _InternalState, _XS) ->
+expand({Tag, Val}=_E, _InternalState, _XS) when is_map(Val) =:= false ->
     [{Tag, [], [charlistize_content(Val)]}];
 
-expand([], _InternalState, _XS) -> [].
+expand({Tag, Val}=_E, InternalState, XS) ->
+    [{Tag, [], lists:flatten([expand(Val, InternalState, XS)])}];
 
+expand([], _InternalState, _XS) -> [].
 
 %% @private
 sort_with_orderlist(L, Keys, KeyPos) ->
@@ -72,9 +121,7 @@ sort_with_orderlist(L, Keys, KeyPos) ->
        end, {[], L}, Keys),
    Sorted ++ Tail.
 
-%
-%   Add float, bool, 
-%
+%% @private
 charlistize_content(X) when is_boolean(X) ->
     case X of
         true -> "true";

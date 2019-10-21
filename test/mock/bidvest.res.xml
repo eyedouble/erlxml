@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <soap:Body>
         <MakeBookingWithQuoteResponse xmlns="http://www.budget.co.za">
             <MakeBookingWithQuoteResult>
                 <AccountID>RFCACC</AccountID>
-                <RentalDuration>1</RentalDuration>
+                <RentalDuration>5</RentalDuration>
                 <RecordType>BR</RecordType>
-                <ReservationNumber>8888888</ReservationNumber>
+                <ReservationNumber>852852</ReservationNumber>
                 <CardAuth>1000</CardAuth>
-                <VoucherNo>85285296</VoucherNo>
+                <VoucherNo>852858296</VoucherNo>
                 <ReservationLines>
                     <ReservationLine>
                         <ResLineCode>R</ResLineCode>
                         <ResLineDesc1>Daily Charge</ResLineDesc1>
-                        <ResLineUnitChrg>259.00</ResLineUnitChrg>
+                        <ResLineUnitChrg>257.00</ResLineUnitChrg>
                         <ResLineChrgUnit> Per Day</ResLineChrgUnit>
                         <ResLineDesc2 />
-                        <ResLineChrg>259.00</ResLineChrg>
+                        <ResLineChrg>257.00</ResLineChrg>
                         <ResLineNil />
                     </ReservationLine>
                     <ReservationLine>
@@ -169,5 +165,4 @@
                 <Errors />
             </MakeBookingWithQuoteResult>
         </MakeBookingWithQuoteResponse>
-    </soap:Body>
-</soap:Envelope>
+

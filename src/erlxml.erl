@@ -8,6 +8,7 @@
 -export([
     main/0
     ,build_schema_state/1
+    ,build_schemas_state/1
     ,get_element_data_type/2
     ,is_list_element/2
     ,get_element_ordering/2
@@ -16,12 +17,41 @@
 build_schema_state({binary, <<RawSchema/binary>>}) ->
     file:write_file(?TMPFILE, RawSchema),
     case filelib:is_file(?TMPFILE) of 
-        true -> build_schema_state({file, filename:absname(?TMPFILE)});
+        true -> 
+            State = build_schema_state({file, filename:absname(?TMPFILE)}),
+            file:delete(?TMPFILE),
+            State;
         false -> {error, file:delete(?TMPFILE), <<"Could not write tmp schema file">>}
     end;
 build_schema_state({file, SchemaPath}) ->
     {Schema,_Rest} = xmerl_scan:file(SchemaPath, []),
     {ok, Model} = xmerl_xsd:process_schema(SchemaPath),
+    ?PRINT(Model),
+
+    {ok, #erlXmlSchemaState{struct=Schema, xsd_state=Model}}.
+
+
+
+build_schemas_state({file, _SchemaPath}) ->
+    Schemas = [    
+
+      
+    %   {"http://www.w3.org/2003/05/soap-envelope", "test/mock/soap/soap-envelope.xsd"},
+    
+    {"http://www.budget.co.za", "test/mock/soap/bidvest.xsd"}
+    % ,{"http://www.w3.org/2003/05/soap-envelope",  "test/mock/soap/soap.xsd"}
+
+    %   {"", "test/mock/soap/bidvest.xsd"}
+
+      % {"http://www.w3.org/XML/1998/namespace",  "test/mock/soap/xml.xsd"},
+      
+      % {"http://schemas.xmlsoap.org/wsdl/",  "test/mock/soap/wsdl.xsd"},    
+    
+    ],
+    SchemaPath= "test/mock/soap/bidvest.xsd",  
+    {Schema,_Rest} = xmerl_scan:file(filename:absname(SchemaPath), []),
+    {ok, Model} = xmerl_xsd:process_schemas(Schemas),
+    ?PRINT(Model),
     {ok, #erlXmlSchemaState{struct=Schema, xsd_state=Model}}.
 
 
@@ -59,9 +89,19 @@ get_referenced_element_content(#xmlElement{name=Name}=Element, #erlXmlSchemaStat
     end,
 
     FindReferencedElementContent = fun(REName, RESchemaStruct) ->
-        case xmerl_xpath:string("//*[@name='" ++ REName ++ "']", RESchemaStruct) of
+        REName1 = case string:split(REName, ":", trailing) of
+            [REName0] -> flatten_text(REName0);
+            [_Car|REName0] -> flatten_text(REName0)
+        end,
+        case xmerl_xpath:string("//*[@name='" ++ REName1 ++ "']", RESchemaStruct) of            
             [#xmlElement{content=Content}=_E] -> Content;
-            _Other -> {error, <<"Could not determine order from element selected in order definition">>}
+            [#xmlElement{content=_}=_E|_]=MultipleHits ->
+                lists:foldl(fun(#xmlElement{content=Content}, Acc) ->
+                    Acc ++ Content
+                end, [], MultipleHits);                
+            Other -> 
+                ?PRINT(Other),
+                {error, <<"Could not determine order from selected element in order definition">>}
         end
     end,
 
@@ -72,7 +112,8 @@ get_referenced_element_content(#xmlElement{name=Name}=Element, #erlXmlSchemaStat
 
 %% @private
 determine_order(Content) ->
-    {ok, lists:flatten(recursive_order_builder(Content))}.
+    Res = lists:flatten(recursive_order_builder(Content)),
+    {ok, Res}.
 
 
 %% @private
