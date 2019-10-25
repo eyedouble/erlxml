@@ -14,6 +14,8 @@
 
 __Version:__ 1.0.0
 
+__Erlang/OTP:__ >= 20
+
 ## Summary
 
 Erlxml provides more modern approach for working with data coming from XML sources.
