@@ -35,7 +35,7 @@ simplify(#xmlText{value=Value}=Val, XS) ->
         <<"xs:nonPositiveInteger">> -> list_to_integer(Value);
         <<"xs:date">> -> conv_func_date(Value);
         <<"xs:boolean">> -> conv_func_boolean(Value);
-        _Other -> list_to_binary(Value)
+        _Other -> unicode:characters_to_binary(Value, utf8)
     end;
 
 simplify(#xmlElement{name = Name, attributes = Attrs, content = Content}=Element, XS) ->

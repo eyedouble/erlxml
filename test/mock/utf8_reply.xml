@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Reply SYSTEM "http://154.66.197.224:8080/iComLive/hostConnect_3_10_1060.dtd">
+<Reply>
+<GetBookingReply>
+<BookingId>318421</BookingId>
+<Ref>AAAA401896</Ref>
+<BookingUpdateCount>28</BookingUpdateCount>
+<Name>JOHN DOE</Name>
+<QB>B</QB>
+<Consult></Consult>
+<AgentRef></AgentRef>
+<Email></Email>
+<TourplanBookingStatus>PN</TourplanBookingStatus>
+<UDText1>john.doe@mail.com</UDText1>
+<UDText2>07225874196</UDText2>
+<UDText3>100.100.150.35</UDText3>
+<UDText4>nodata</UDText4>
+<UDText5></UDText5>
+<TourplanConsultant>GJ</TourplanConsultant>
+<SalesAnalysis1>ZA</SalesAnalysis1>
+<SalesAnalysis2>WS</SalesAnalysis2>
+<SalesAnalysis3>DS</SalesAnalysis3>
+<SalesAnalysis4></SalesAnalysis4>
+<SalesAnalysis5>ZA</SalesAnalysis5>
+<SalesAnalysis6></SalesAnalysis6>
+<TaxIndicator>0</TaxIndicator>
+<TravelDate>2019-12-14</TravelDate>
+<EnteredDate>2019-10-23</EnteredDate>
+<BookingStatus></BookingStatus>
+<ReadOnly>N</ReadOnly>
+<CanAddServices>Y</CanAddServices>
+<BookingType>F</BookingType>
+<IsInternetBooking>Y</IsInternetBooking>
+<Currency>ZAR</Currency>
+<TotalPrice>1534000</TotalPrice>
+<Remarks></Remarks>
+<Dialogue></Dialogue>
+<BookingNotes>
+<BookingNote>
+<NoteCategory>DOI</NoteCategory>
+<NoteText>30850</NoteText>
+</BookingNote>
+<BookingNote>
+<NoteCategory>FNM</NoteCategory>
+<NoteText>JOHN</NoteText>
+</BookingNote>
+<BookingNote>
+<NoteCategory>PUI</NoteCategory>
+<NoteText>30850</NoteText>
+</BookingNote>
+<BookingNote>
+<NoteCategory>SNM</NoteCategory>
+<NoteText>DOE</NoteText>
+</BookingNote>
+</BookingNotes>
+<AccountingDetails>
+<InvoicedTotal>0</InvoicedTotal>
+<ReceivedTotal>0</ReceivedTotal>
+<CreditsTotal>0</CreditsTotal>
+<AmountDue>0</AmountDue>
+<FutureBilling>1534000</FutureBilling>
+</AccountingDetails>
+<Services>
+<Service>
+<ServiceLineId>437372</ServiceLineId>
+<ServiceLineUpdateCount>10</ServiceLineUpdateCount>
+<Opt>GENCRTEM001E_UUNL</Opt>
+<OptionNumber>2796</OptionNumber>
+<Date>2019-12-14</Date>
+<SequenceNumber>10</SequenceNumber>
+<Adults>1</Adults>
+<Children>0</Children>
+<Infants>0</Infants>
+<CostedInBooking>Y</CostedInBooking>
+<LinePrice>1534000</LinePrice>
+<SCU>day</SCU>
+<SCUqty>13</SCUqty>
+<Pickup_Date>2019-12-14</Pickup_Date>
+<puTime>0700</puTime>
+<puRemark>Cape Town</puRemark>
+<Dropoff_Date>2019-12-27</Dropoff_Date>
+<doTime>0700</doTime>
+<doRemark>Cape Town</doRemark>
+<Remarks>Renter:
+John Doe 
+john.doe@mail.com
+07289574585
+ZA - Nationality
+ZA - 100.100.150.35
+Age 35
+
+23 October 2019 @ 6:04 pm - Web Enquiry (Payment Not Possible)
+{payment_timestamp_placeholder} - Web Payment - {payment_amount_placeholder}
+AAA001
+
+Tempest SA: E - Hyundai H1 8 Seater - Tempest Car Hire 11037546
+GENCRTEM001E_UUNL
+
+Cape Town - 14 Dec 2019 @ 07:00
+Cape Town - 27 Dec 2019 @ 07:00
+
+R15340 (13 days x R1180)
+
+Super Cover
+Unlimited km
+R5044 Excess
+R1500 Rental Security Deposit
+
+
+Extras Requested
+Contract Fee @ R90 Per Unit 
+
+Estimated One Way Fee = R 0
+Total = R90
+
+Border Crossing Requested
+Namibia
+Total = R1350
+
+Renter Comments:
+Does the hyundai H1 come in automatic. I’m sorry the previous enquires location was wrong
+
+-------------------
+----- WP DATA -----
+-------------------
+[[veh_id:20110]]
+[[sup_id:9051]]
+[[tp_rate_id:3132397]]
+[[tp_option_code:GENCRTEM001E_SUNL]]
+[[owf_id:]]
+[[pickup_location:17308]]
+[[dropoff_location:17308]]
+[[pickup_date:14-12-2019]]
+[[pickup_time:07:00]]
+[[dropoff_date:27-12-2019]]
+[[dropoff_time:07:00]]
+[[country:South Africa]]
+[[car_type:1]]
+</Remarks>
+<SupplierName>Tempest Car Hire 11037546</SupplierName>
+<Description>Hyundai H1 8 Seater or Similar</Description>
+<Comment>Super Cover</Comment>
+<CancelDeleteStatus>C</CancelDeleteStatus>
+<CanUpdate>N</CanUpdate>
+<CanAccept>N</CanAccept>
+<PriceCode>RR</PriceCode>
+<TourplanServiceStatus>IR</TourplanServiceStatus>
+<ServiceCategory>S</ServiceCategory>
+<LocationCode>GEN</LocationCode>
+<Voucher_Status></Voucher_Status>
+<ServiceLineExpiryDate>2019-12-14</ServiceLineExpiryDate>
+<SupplierConfirmation></SupplierConfirmation>
+<Status>??</Status>
+<ServiceLineNotes>
+<ServiceLineNote>
+<NoteCategory>SVN</NoteCategory>
+<NoteText>Extras Requested:
+Contract Fee @ R90 Per Unit 
+Border Crossing Requested
+Namibia
+Total = R1350</NoteText>
+</ServiceLineNote>
+</ServiceLineNotes>
+</Service>
+</Services>
+</GetBookingReply>
+</Reply>
+

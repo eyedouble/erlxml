@@ -14,6 +14,14 @@ deserialise_2_test() ->
     Res = erlxml_deserialise:deserialise({file, ?MOCK2XML}, Schema),
     ?assertMatch(?MOCK2MAPRES, Res).
 
+%
+%   Added after practical implementation error (list_to_binary)
+%
+deserialise_3_test() ->
+    {ok, Schema} = erlxml:build_schema_state({file, ?MOCK4XSD}),
+    Res = erlxml_deserialise:deserialise({file, ?MOCK4XML}, Schema),
+    ?assertMatch(?MOCK3MAPRES, Res).
+
 deserialise_from_string_test() ->
     {ok, Xsd} = file:read_file(?MOCK2XSD),
     {ok, Schema} = erlxml:build_schema_state({binary, Xsd}),
