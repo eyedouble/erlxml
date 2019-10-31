@@ -10,7 +10,7 @@
     ,rescan_for_namespacing/2
 ]).
 
--define(TIMEOUT, 175).
+-define(TIMEOUT, 500).
 
 serialise(Struct, #erlXmlSchemaState{xsd_state=_XsdState}=XS) -> serialise(Struct, XS, "<?xml version=\"1.0\"?>").
 
